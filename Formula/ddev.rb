@@ -5,37 +5,31 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.9"
+  version "1.23.11"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.9/ddev_macos-amd64.v1.23.9.tar.gz"
-      sha256 "23c5b339fcb3a8c229e3f1591a38ddc6118820179e313f41e9499307a99f3476"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.11/ddev_macos-amd64.v1.23.11.tar.gz"
+      sha256 "4e96beb700918e1109738de7cded0a60161733ba1783645c8501f7891e48b4e2"
 
       def install
         if build.head?
-            resource("ddev-binary").stage do
-              # First unzip the main artifact
-              system "unzip", "-o", "ddev-head-artifacts.zip"
+            resource("ddev-artifacts").unpack buildpath
 
-              # Verify checksums
-              system "sha256sum", "-c", "checksums.txt"
+            # Get the appropriate inner zipfile based on architecture
+            os = OS.mac? ? "darwin" : "linux"
+            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+            inner_zip = "ddev_#{os}_#{arch}.zip"
 
-              # Now get the appropriate inner zipfile based on architecture
-              os = OS.mac? ? "macos" : "linux"
-              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-              inner_zip = "ddev_#{os}_#{arch}.zip"
+            system "unzip", "-o", inner_zip, "-d", buildpath
 
-              # Unzip the architecture-specific binary and completions
-              system "unzip", "-o", inner_zip
-              bin.install "ddev"
-              bash_completion.install "ddev_bash_completion.sh" => "ddev"
-              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-            end
+            bin.install "ddev"
+            bash_completion.install "ddev_bash_completion.sh" => "ddev"
+            zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+            fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
         else
             bin.install "ddev"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -45,30 +39,24 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.9/ddev_macos-arm64.v1.23.9.tar.gz"
-      sha256 "7a36b3c40e870f849e7789eaf5dc1bcd7a8239da29dffdad9ec7c3b35f1ac308"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.11/ddev_macos-arm64.v1.23.11.tar.gz"
+      sha256 "46ac499fe700b41dc6000cac2c3167f9a73f5aa842e7e953048544c2da4880f9"
 
       def install
         if build.head?
-            resource("ddev-binary").stage do
-              # First unzip the main artifact
-              system "unzip", "-o", "ddev-head-artifacts.zip"
+            resource("ddev-artifacts").unpack buildpath
 
-              # Verify checksums
-              system "sha256sum", "-c", "checksums.txt"
+            # Get the appropriate inner zipfile based on architecture
+            os = OS.mac? ? "darwin" : "linux"
+            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+            inner_zip = "ddev_#{os}_#{arch}.zip"
 
-              # Now get the appropriate inner zipfile based on architecture
-              os = OS.mac? ? "macos" : "linux"
-              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-              inner_zip = "ddev_#{os}_#{arch}.zip"
+            system "unzip", "-o", inner_zip, "-d", buildpath
 
-              # Unzip the architecture-specific binary and completions
-              system "unzip", "-o", inner_zip
-              bin.install "ddev"
-              bash_completion.install "ddev_bash_completion.sh" => "ddev"
-              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-            end
+            bin.install "ddev"
+            bash_completion.install "ddev_bash_completion.sh" => "ddev"
+            zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+            fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
         else
             bin.install "ddev"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -82,30 +70,24 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.9/ddev_linux-amd64.v1.23.9.tar.gz"
-        sha256 "885b406713d5059832fbe2c825ceb8163dd95c1c35f54ea6934df33661af1f9a"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.11/ddev_linux-amd64.v1.23.11.tar.gz"
+        sha256 "c696ba6e0c34d15cb80e8f19ab378b97f2858388c08eca1fd501d118339a9471"
 
         def install
           if build.head?
-              resource("ddev-binary").stage do
-                # First unzip the main artifact
-                system "unzip", "-o", "ddev-head-artifacts.zip"
+              resource("ddev-artifacts").unpack buildpath
 
-                # Verify checksums
-                system "sha256sum", "-c", "checksums.txt"
+              # Get the appropriate inner zipfile based on architecture
+              os = OS.mac? ? "darwin" : "linux"
+              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+              inner_zip = "ddev_#{os}_#{arch}.zip"
 
-                # Now get the appropriate inner zipfile based on architecture
-                os = OS.mac? ? "macos" : "linux"
-                arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-                inner_zip = "ddev_#{os}_#{arch}.zip"
+              system "unzip", "-o", inner_zip, "-d", buildpath
 
-                # Unzip the architecture-specific binary and completions
-                system "unzip", "-o", inner_zip
-                bin.install "ddev"
-                bash_completion.install "ddev_bash_completion.sh" => "ddev"
-                zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-                fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-              end
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
           else
               bin.install "ddev"
               bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -117,30 +99,24 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.9/ddev_linux-arm64.v1.23.9.tar.gz"
-        sha256 "6328fb3f70571aa3587060602de9f45cac00f656cd60db6433e81fdf7c174c74"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.11/ddev_linux-arm64.v1.23.11.tar.gz"
+        sha256 "da9a20de2db6279dad664deeb57e7b2572a2f72b0b74a8999cc3d117ec9368a1"
 
         def install
           if build.head?
-              resource("ddev-binary").stage do
-                # First unzip the main artifact
-                system "unzip", "-o", "ddev-head-artifacts.zip"
+              resource("ddev-artifacts").unpack buildpath
 
-                # Verify checksums
-                system "sha256sum", "-c", "checksums.txt"
+              # Get the appropriate inner zipfile based on architecture
+              os = OS.mac? ? "darwin" : "linux"
+              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+              inner_zip = "ddev_#{os}_#{arch}.zip"
 
-                # Now get the appropriate inner zipfile based on architecture
-                os = OS.mac? ? "macos" : "linux"
-                arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-                inner_zip = "ddev_#{os}_#{arch}.zip"
+              system "unzip", "-o", inner_zip, "-d", buildpath
 
-                # Unzip the architecture-specific binary and completions
-                system "unzip", "-o", inner_zip
-                bin.install "ddev"
-                bash_completion.install "ddev_bash_completion.sh" => "ddev"
-                zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-                fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-              end
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
           else
               bin.install "ddev"
               bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -154,10 +130,9 @@ class Ddev < Formula
 
   head do
     url "https://github.com/ddev-test/ddev.git", branch: "master"
-
-    resource "ddev-binary" do
+    resource "ddev-artifacts" do
       url "https://nightly.link/ddev-test/ddev/workflows/master-build/master/ddev-head-artifacts.zip"
-      sha256 "" # We'll need to skip checksum verification for nightlies
+      sha256 "blank-for-now"
     end
   end
 
