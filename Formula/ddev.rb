@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.14"
+  version "1.23.15"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_macos-amd64.v1.23.14.tar.gz"
-      sha256 "68c8827529563d3b57971012cf4bf3376bea8f28bfcfee593aee40a3b40f4c20"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.15/ddev_macos-amd64.v1.23.15.tar.gz"
+      sha256 "c0bd03ab0d5e17bce06a5e935e029f83a94da9f48d38cbdd437821a9aba59fe5"
 
       def install
         if build.head?
@@ -35,17 +35,12 @@ class Ddev < Formula
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-        end
-
-        livecheck do
-          url :head
-          skip "Skipping checksum verification for HEAD builds due to changing SHA"
         end
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_macos-arm64.v1.23.14.tar.gz"
-      sha256 "fc80a604c18641c2b31ecc8266a957fbd2f581ded200bc1d5b5ac621233fddbc"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.15/ddev_macos-arm64.v1.23.15.tar.gz"
+      sha256 "03d09f70d6add05ca5530ed8064deceb6d29019a70bce1215d06f6dac9942dfd"
 
       def install
         if build.head?
@@ -67,11 +62,6 @@ class Ddev < Formula
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-        end
-
-        livecheck do
-          url :head
-          skip "Skipping checksum verification for HEAD builds due to changing SHA"
         end
       end
     end
@@ -80,8 +70,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_linux-amd64.v1.23.14.tar.gz"
-        sha256 "0171285d1d0e1ec42a528d384d726d0f4f4bbf6e8be20d2269b46e7ae9ece511"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.15/ddev_linux-amd64.v1.23.15.tar.gz"
+        sha256 "044cc14a0e494a623d940231428936c20474e337360a1adbe16465f57f787300"
 
         def install
           if build.head?
@@ -103,19 +93,14 @@ class Ddev < Formula
               bash_completion.install "ddev_bash_completion.sh" => "ddev"
               zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
               fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
-          end
-
-          livecheck do
-            url :head
-            skip "Skipping checksum verification for HEAD builds due to changing SHA"
           end
         end
       end
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_linux-arm64.v1.23.14.tar.gz"
-        sha256 "7c2a54ec49f39d0935e7ee67ba7d0b1d29b1c873cb9f61e2e751b6b214691d52"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.15/ddev_linux-arm64.v1.23.15.tar.gz"
+        sha256 "b54d61282e1561cb96d078e5084f92ce93f36d74df9e09a74ba834c85df0c73c"
 
         def install
           if build.head?
@@ -138,13 +123,15 @@ class Ddev < Formula
               zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
               fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
           end
-
-          livecheck do
-            url :head
-            skip "Skipping checksum verification for HEAD builds due to changing SHA"
-          end
         end
       end
+    end
+  end
+
+  # Define custom download strategy
+  class NoVerifyDownloadStrategy < CurlDownloadStrategy
+    def _fetch
+      curl_download url, to: temporary_path
     end
   end
 
@@ -152,6 +139,7 @@ class Ddev < Formula
     url "https://github.com/ddev-test/ddev.git", branch: "master"
     resource "ddev-artifacts" do
       url "https://nightly.link/ddev-test/ddev/workflows/master-build/master/ddev-head-artifacts.zip"
+      using NoVerifyDownloadStrategy
     end
   end
 
