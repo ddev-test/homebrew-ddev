@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.13"
+  version "1.23.14"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.13/ddev_macos-amd64.v1.23.13.tar.gz"
-      sha256 "b83ac5028f361fa411fbd8c3e9667cc4ea98ddd01beea0457ad2997a7b149400"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_macos-amd64.v1.23.14.tar.gz"
+      sha256 "68c8827529563d3b57971012cf4bf3376bea8f28bfcfee593aee40a3b40f4c20"
 
       def install
         if build.head?
@@ -36,11 +36,16 @@ class Ddev < Formula
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
         end
+
+        livecheck do
+          url :head
+          skip "Skipping checksum verification for HEAD builds due to changing SHA"
+        end
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.13/ddev_macos-arm64.v1.23.13.tar.gz"
-      sha256 "16d63a3e7c1a9d3c299028d80fa9cb405fba81ac0205acaf055cf69216005638"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_macos-arm64.v1.23.14.tar.gz"
+      sha256 "fc80a604c18641c2b31ecc8266a957fbd2f581ded200bc1d5b5ac621233fddbc"
 
       def install
         if build.head?
@@ -62,6 +67,11 @@ class Ddev < Formula
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+        end
+
+        livecheck do
+          url :head
+          skip "Skipping checksum verification for HEAD builds due to changing SHA"
         end
       end
     end
@@ -70,8 +80,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.13/ddev_linux-amd64.v1.23.13.tar.gz"
-        sha256 "3fe25520e3efbd017e6717140875fa830b2b629d02b54d27dee77279b2ec69fa"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_linux-amd64.v1.23.14.tar.gz"
+        sha256 "0171285d1d0e1ec42a528d384d726d0f4f4bbf6e8be20d2269b46e7ae9ece511"
 
         def install
           if build.head?
@@ -94,13 +104,18 @@ class Ddev < Formula
               zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
               fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
           end
+
+          livecheck do
+            url :head
+            skip "Skipping checksum verification for HEAD builds due to changing SHA"
+          end
         end
       end
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.13/ddev_linux-arm64.v1.23.13.tar.gz"
-        sha256 "8576a149abd3e652b6c3f1633133521fcd7c038f9571a154fa6fee5993cd35ee"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.14/ddev_linux-arm64.v1.23.14.tar.gz"
+        sha256 "7c2a54ec49f39d0935e7ee67ba7d0b1d29b1c873cb9f61e2e751b6b214691d52"
 
         def install
           if build.head?
@@ -122,6 +137,11 @@ class Ddev < Formula
               bash_completion.install "ddev_bash_completion.sh" => "ddev"
               zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
               fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+          end
+
+          livecheck do
+            url :head
+            skip "Skipping checksum verification for HEAD builds due to changing SHA"
           end
         end
       end
