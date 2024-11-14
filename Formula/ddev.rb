@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.22"
+  version "1.23.23"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.22/ddev_macos-amd64.v1.23.22.tar.gz"
-      sha256 "aaa01d89961b60dd309f1c869881f70af9cf656fd336cb897d36638d8b69b57c"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.23/ddev_macos-amd64.v1.23.23.tar.gz"
+      sha256 "91d3374b13a57c2ff749a3bfe2da9330c97fa6ab0037544e1c4e389c4e2639cf"
 
       def install
         if build.head?
@@ -39,8 +39,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.22/ddev_macos-arm64.v1.23.22.tar.gz"
-      sha256 "c4ceed026a897e31396e1487b0610ed86d4c655a84f32ab7c0ce546e6d5028c4"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.23/ddev_macos-arm64.v1.23.23.tar.gz"
+      sha256 "66225845e6326053d01078f5eb85574524e27d7ee146cc827f543002c8e9a4f0"
 
       def install
         if build.head?
@@ -70,8 +70,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.22/ddev_linux-amd64.v1.23.22.tar.gz"
-        sha256 "93a9ae140b4491f096254701b47ccafdf01d4df074baa3a7cb85d24f45e62b2d"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.23/ddev_linux-amd64.v1.23.23.tar.gz"
+        sha256 "36cef50fe933a6bef9148bbb91fbd9d47658dca651ca09b385f1336a54b1847a"
 
         def install
           if build.head?
@@ -99,8 +99,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.22/ddev_linux-arm64.v1.23.22.tar.gz"
-        sha256 "b743ff78bf1eb0736b606f1ccf5224f9ac9a382c28037218334e4d6c75055f28"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.23/ddev_linux-arm64.v1.23.23.tar.gz"
+        sha256 "ad191ecc46f9b4fcdd540186501ff0cdb1a68e7100be0ae652fc2727f1ea8992"
 
         def install
           if build.head?
