@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.16"
+  version "1.23.17"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.16/ddev_macos-amd64.v1.23.16.tar.gz"
-      sha256 "b07666f94e8c786c8aaeb1c6db18c4944e837a1a41fea7f807b5a8a71bc5a04b"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.17/ddev_macos-amd64.v1.23.17.tar.gz"
+      sha256 "05b3f18aa1600acbf5197fa94d2bf0f13e7bdc9c956d11593b6074a19eea651c"
 
       def install
         if build.head?
@@ -39,8 +39,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.16/ddev_macos-arm64.v1.23.16.tar.gz"
-      sha256 "cc4cc34aece6bff6d754ba170ce04cc433649779067e274a5067c7ce0b79f44d"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.17/ddev_macos-arm64.v1.23.17.tar.gz"
+      sha256 "01c394c8d06da7c3c426064611a5d9ad67198950f3ff90b56d77b4d715194665"
 
       def install
         if build.head?
@@ -70,8 +70,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.16/ddev_linux-amd64.v1.23.16.tar.gz"
-        sha256 "3307f02a0ef4d319dd9b88a1498f40c1eb5423095f7f334bfe03ceacca1f7d97"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.17/ddev_linux-amd64.v1.23.17.tar.gz"
+        sha256 "273fe789fba10def0becafb82845ad76436c49f6a88da2eafcd4b16b22b2038e"
 
         def install
           if build.head?
@@ -99,8 +99,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.16/ddev_linux-arm64.v1.23.16.tar.gz"
-        sha256 "facec8ee81a026f3c5e2936a1dc233327b63723bd7a0a0e33cb8d44c8d9e5007"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.17/ddev_linux-arm64.v1.23.17.tar.gz"
+        sha256 "2208908bed6ebb5ab7d91a79d0b43d392379c05988bdbfcf23926e7b55a05a94"
 
         def install
           if build.head?
@@ -128,27 +128,10 @@ class Ddev < Formula
     end
   end
 
-  # Define custom download strategy
-  class NoVerifyDownloadStrategy < AbstractDownloadStrategy
-    def fetch(_timeout: nil, **_options)
-      ohai "Downloading #{@url}"
-      curl_download @url, to: temporary_path
-    end
-
-    def cached_location
-      temporary_path
-    end
-
-    def clear_cache
-      rm_rf(temporary_path)
-    end
-  end
-
   head do
     url "https://github.com/ddev-test/ddev.git", branch: "master"
     resource "ddev-artifacts" do
       url "https://nightly.link/ddev-test/ddev/workflows/master-build/master/ddev-head-artifacts.zip"
-      using NoVerifyDownloadStrategy
     end
   end
 
