@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.29"
+  version "1.23.30"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
-    on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.29/ddev_macos-amd64.v1.23.29.tar.gz"
-      sha256 "2367c255408d75dc0eee19394e3208b1df7b28f76385c2165c0dace6c07075e8"
+    if Hardware::CPU.intel?
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.30/ddev_macos-amd64.v1.23.30.tar.gz"
+      sha256 "f448acde6425380edbb8f7488dab31adead76fea39cc161c991394a8560a7f88"
 
       def install
         if build.head?
@@ -35,9 +35,9 @@ class Ddev < Formula
         end
       end
     end
-    on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.29/ddev_macos-arm64.v1.23.29.tar.gz"
-      sha256 "7603f14d51f484cec4b095ae1f60d80cc71d7e08a96e7d0dd3ca6967675b546e"
+    if Hardware::CPU.arm?
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.30/ddev_macos-arm64.v1.23.30.tar.gz"
+      sha256 "72001bfc447662923caf4aa4846f171015caf449050a0c37f3d2f66644f88972"
 
       def install
         if build.head?
@@ -62,10 +62,10 @@ class Ddev < Formula
   end
 
   on_linux do
-    on_intel do
+    if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.29/ddev_linux-amd64.v1.23.29.tar.gz"
-        sha256 "5cf46aeb3e5664870d40a3849392dd9cb51c4306ed37939978f557677f7a82e4"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.30/ddev_linux-amd64.v1.23.30.tar.gz"
+        sha256 "2491c3036821dba6fb0e03a9daf0defd8db80084d44ed84fda7b40cd20882956"
 
         def install
           if build.head?
@@ -88,10 +88,10 @@ class Ddev < Formula
         end
       end
     end
-    on_arm do
+    if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.29/ddev_linux-arm64.v1.23.29.tar.gz"
-        sha256 "b987ebb2871f38d378dcf419b0faae5cd984d57f6073f6024768da2ff0c94d20"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.30/ddev_linux-arm64.v1.23.30.tar.gz"
+        sha256 "1dfe91f53e745daf4d24e071f7e5835a8e20667468cedafd716473b6812b2b05"
 
         def install
           if build.head?
@@ -117,7 +117,7 @@ class Ddev < Formula
   end
 
   head do
-    url "https://github.com/ddev-test/ddev.git", branch: "master"
+    url "https://github.com/ddev-test/ddev.git", branch: "main"
     depends_on "go" => :build
     depends_on "make" => :build
   end
