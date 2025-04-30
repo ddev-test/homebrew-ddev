@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.38"
+  version "1.23.40"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.38/ddev_macos-amd64.v1.23.38.tar.gz"
-      sha256 "8c64bd46e54dd7a766f09a8b9410dd010e69c7e3f8198948bab2b19ccd9bb72e"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.40/ddev_macos-amd64.v1.23.40.tar.gz"
+      sha256 "31ff4e91b64b4ef7127d00252519dfda885506c82433cd9a7fbc2ca49073b169"
 
       def install
         if build.head?
@@ -36,8 +36,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.38/ddev_macos-arm64.v1.23.38.tar.gz"
-      sha256 "ad6ca79ca32569f34395a036e212cf5f3bdf18c50703ba6ac6dc4bfe30ebe072"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.40/ddev_macos-arm64.v1.23.40.tar.gz"
+      sha256 "22eb69f2903f35b8ad1eac05f6cb17d5cf231935a01dcf5903980e880b4d640e"
 
       def install
         if build.head?
@@ -63,8 +63,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.38/ddev_linux-amd64.v1.23.38.tar.gz"
-      sha256 "4d5f20f3ee0d0c11452d70fd11d5adf9d7ea33060b01fefdcf303c3599788106"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.40/ddev_linux-amd64.v1.23.40.tar.gz"
+      sha256 "04d8657be5bf332c64a4c9a19e3fa472ef0978e497158379b7cd9b92c9e8569d"
       def install
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -86,8 +86,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.38/ddev_linux-arm64.v1.23.38.tar.gz"
-      sha256 "9b8a59497f41da24ea9b8611b24c6657bcb832aab36c0752076aa4765bc3de0e"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.40/ddev_linux-arm64.v1.23.40.tar.gz"
+      sha256 "88b9ed9963dd5be843f3bdd93cf4ee23c245f6d7b8302efb6a8d39c370cd52c7"
       def install
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -118,14 +118,14 @@ class Ddev < Formula
   # fail fast if tapped under the old drud or rfay names
   def initialize(*args, **kwargs)
     super(*args, **kwargs)
-    if ["drud/homebrew-ddev", "drud/homebrew-ddev-edge", "ddev-test/homebrew-ddev", "ddev-test/homebrew-ddev-edge", "rfay/homebrew-ddev"].include?(tap.full_name)
+    if ["drud/homebrew-ddev", "ddev-test/homebrew-ddev", "rfay/homebrew-ddev"].include?(tap.full_name)
       odie <<~EOS
         ERROR: your homebrew tap is the ancient #{tap.full_name},
         but that repository has moved.
         Please run:
           brew uninstall -f ddev
           brew untap #{tap.full_name}
-          brew install ddev/ddev/ddev-edge
+          brew install ddev/ddev/ddev
       EOS
     end
   end
