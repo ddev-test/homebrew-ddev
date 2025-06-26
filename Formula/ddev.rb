@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.23.70"
+  version "1.23.71"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.70/ddev_macos-amd64.v1.23.70.tar.gz"
-      sha256 "300d6073889dbef668b6877fbd2bae0d000eb1d7ce3872ce63f36e7fa0b39694"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.71/ddev_macos-amd64.v1.23.71.tar.gz"
+      sha256 "ae5330e56150b4e6bb72db5aa6c9484b5a2254cb5a0813779faf83cdeaf3188d"
 
       def install
         if build.head?
@@ -24,13 +24,13 @@ class Ddev < Formula
             system "mkdir", "-p", "#{bin}"
             system "make", "build", "completions"
             system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev_hostname", "#{bin}/ddev_hostname"
+            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev-hostname", "#{bin}/ddev-hostname"
             bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
             zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
         else
             bin.install "ddev"
-            bin.install "ddev_hostname"
+            bin.install "ddev-hostname"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
@@ -38,8 +38,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.70/ddev_macos-arm64.v1.23.70.tar.gz"
-      sha256 "48bafbad8f11ba24e8fb2b13f6418da86598167c561cf0af3a7c14e4d91a58b4"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.71/ddev_macos-arm64.v1.23.71.tar.gz"
+      sha256 "73e57e38f856ce739d44111b057401f0bfe91b4fb76d7f7272f9163b46957a09"
 
       def install
         if build.head?
@@ -50,13 +50,13 @@ class Ddev < Formula
             system "mkdir", "-p", "#{bin}"
             system "make", "build", "completions"
             system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev_hostname", "#{bin}/ddev_hostname"
+            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev-hostname", "#{bin}/ddev-hostname"
             bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
             zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
         else
             bin.install "ddev"
-            bin.install "ddev_hostname"
+            bin.install "ddev-hostname"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
@@ -67,8 +67,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.70/ddev_linux-amd64.v1.23.70.tar.gz"
-      sha256 "320e001894d772952426344115d913c8bbcfec09ac3cabf213f9b8cc0fd69262"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.71/ddev_linux-amd64.v1.23.71.tar.gz"
+      sha256 "d472e6ac2058dbe0bd98360e9ccb19806236c694aa298eed5dd99043fee442cc"
       def install
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -78,13 +78,13 @@ class Ddev < Formula
             system "mkdir", "-p", "#{bin}"
             system "make", "build", "completions"
             system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev_hostname", "#{bin}/ddev_hostname"
+            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev-hostname", "#{bin}/ddev-hostname"
             bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
             zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
         else
             bin.install "ddev"
-            bin.install "ddev_hostname"
+            bin.install "ddev-hostname"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
@@ -92,8 +92,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.70/ddev_linux-arm64.v1.23.70.tar.gz"
-      sha256 "4814684017172bac7fa05d46b80a1f721bbf9d05001e8e7fd66b366921841e54"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.71/ddev_linux-arm64.v1.23.71.tar.gz"
+      sha256 "2fe8dc56c26a5f14ebeb42501beb4a659db6840f7ea1f90f671131f6702e6d9e"
       def install
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -103,13 +103,13 @@ class Ddev < Formula
             system "mkdir", "-p", "#{bin}"
             system "make", "build", "completions"
             system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev_hostname", "#{bin}/ddev_hostname"
+            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev-hostname", "#{bin}/ddev-hostname"
             bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
             zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
         else
             bin.install "ddev"
-            bin.install "ddev_hostname"
+            bin.install "ddev-hostname"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
             zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
             fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
