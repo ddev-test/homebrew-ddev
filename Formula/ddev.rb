@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.99.12"
+  version "1.99.13"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.99.12/ddev_macos-amd64.v1.99.12.tar.gz"
-      sha256 "2dc960b2350436b287abc2aa3c29b5cd6c1c7c55d0811d39f319b8bd2671fc2b"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.99.13/ddev_macos-amd64.v1.99.13.tar.gz"
+      sha256 "09159322d3e412a0be6b7cfe3280a996fe860d6ae59d9cb50291db321affedee"
 
       def install
         if build.head?
@@ -38,8 +38,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.99.12/ddev_macos-arm64.v1.99.12.tar.gz"
-      sha256 "3cb1c5efec319201c601ec1aeebc25dd5568556ed8d144f10b0659aee0ea622c"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.99.13/ddev_macos-arm64.v1.99.13.tar.gz"
+      sha256 "bfdb991c18d55e2235f3d15fb39a2f2614ae46aef024c01025ccfecc313866ec"
 
       def install
         if build.head?
@@ -67,8 +67,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.99.12/ddev_linux-amd64.v1.99.12.tar.gz"
-      sha256 "18112ca25f6c9beb235b36f4668ea5795e26e000f46c62c7000f80c5e74a1346"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.99.13/ddev_linux-amd64.v1.99.13.tar.gz"
+      sha256 "0d00d1ab6c5348613bd04d5124ae56e64caf1734e440874008f483f63151c711"
       def install
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -92,8 +92,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.99.12/ddev_linux-arm64.v1.99.12.tar.gz"
-      sha256 "db9c940787d00dfd3a37974daa527a640206b3a17b822daecd8d1ce8decf5d65"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.99.13/ddev_linux-arm64.v1.99.13.tar.gz"
+      sha256 "85e66f2bd5a4bd87de806399bf789fbfdd546a8123aee44ccf4cd4bd9694a43b"
       def install
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
