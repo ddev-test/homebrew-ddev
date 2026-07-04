@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.102.1"
+  version "1.102.2"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.102.1/ddev_macos-amd64.v1.102.1.tar.gz"
-      sha256 "837c8d7df9922512ef69ace69e876832d4451cdf0732c3785f07bbe3adcef1ac"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.102.2/ddev_macos-amd64.v1.102.2.tar.gz"
+      sha256 "1416db5708b7a6a8ab06df472b57c20bfe30deb03ab2b8ed98914cf03615fae7"
 
       define_method(:install) do
         if build.head?
@@ -38,8 +38,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.102.1/ddev_macos-arm64.v1.102.1.tar.gz"
-      sha256 "763975fb47e1f79ed802d3542f47e96fd4f0e454e62ff7545b1842e35f47b636"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.102.2/ddev_macos-arm64.v1.102.2.tar.gz"
+      sha256 "e6028550aaed6a59ab6e776a8417ed790ebe6375315669ed205aeebab15d4541"
 
       define_method(:install) do
         if build.head?
@@ -67,8 +67,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.102.1/ddev_linux-amd64.v1.102.1.tar.gz"
-      sha256 "1445d309ac6ee712251586c1766d908dd5bf8ecfd681c422d525ccec48649fe6"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.102.2/ddev_linux-amd64.v1.102.2.tar.gz"
+      sha256 "a767f3c9fcfb8fb6c5e6b97f22dab534f1b693bec93ac8f18c4d38ecccf702d2"
       define_method(:install) do
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -92,8 +92,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.102.1/ddev_linux-arm64.v1.102.1.tar.gz"
-      sha256 "dcb0b5707ecd6c8be8230f4083982a8269012d249eea4f0c85d72f8ed861b88b"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.102.2/ddev_linux-arm64.v1.102.2.tar.gz"
+      sha256 "20f1461fd95e7bad74ffe8627f7ba91c389345a5b40b67e92ff1c2a45649c95a"
       define_method(:install) do
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
