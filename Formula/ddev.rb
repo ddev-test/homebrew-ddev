@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.104.1"
+  version "1.105.1"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.104.1/ddev_macos-amd64.v1.104.1.tar.gz"
-      sha256 "cabd115f7c37626e432ee30965bd8635b6fa88ac7f7b240f1402d2d1a3fe244a"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.105.1/ddev_macos-amd64.v1.105.1.tar.gz"
+      sha256 "e2a4aa8a451dd7836becd75ed252b8b397d9d631705585a8450b7ab74083655b"
 
       define_method(:install) do
         if build.head?
@@ -38,8 +38,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.104.1/ddev_macos-arm64.v1.104.1.tar.gz"
-      sha256 "96c2043caf8288277e736e39233d796b01952ca92d26414461dcfaf0b7fc4526"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.105.1/ddev_macos-arm64.v1.105.1.tar.gz"
+      sha256 "2de4b950057530a086ff650e475c4bffc81918fba07a40ae53d47543755cedcf"
 
       define_method(:install) do
         if build.head?
@@ -67,8 +67,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.104.1/ddev_linux-amd64.v1.104.1.tar.gz"
-      sha256 "0f2f9cf324dc9fce48156baea8419cdc891dc778c3e237ffd197a323cd7a49e1"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.105.1/ddev_linux-amd64.v1.105.1.tar.gz"
+      sha256 "c542b92e4e7419cdc8aa6ad2d7f9994223f1997bea14cc7001551b04b3b2dc23"
       define_method(:install) do
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -92,8 +92,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.104.1/ddev_linux-arm64.v1.104.1.tar.gz"
-      sha256 "af1e05faae08c56fe3ad86094b22ea5955e9b46a2153380c5ef83682567c4adc"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.105.1/ddev_linux-arm64.v1.105.1.tar.gz"
+      sha256 "86e7fff8fb5b9c5706d13832019727a36c87b29cc9b5ef4438c8c1154f88b501"
       define_method(:install) do
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
